@@ -5,3 +5,13 @@ runing on different port it will give cours error
 // so in frontend package.json we add proxy .
 
 {"proxy": "http://127.0.0.1:500"}
+
+//creating schima
+ 1. chat schima
+  {
+    1. chatName
+    2. isGroupchat
+    3. users
+    4. latestMessage
+    5. grouAdmin
+  }
