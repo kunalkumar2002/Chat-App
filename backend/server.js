@@ -1,11 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import { chats } from "./data/data.js";
+import cors from "cors";
 
 const server = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
-
+server.use(cors());
 server.get("/", (req, res) => {
   return res.send("welcome to new chat APP");
 });
