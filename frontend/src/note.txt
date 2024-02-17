@@ -1,0 +1,7 @@
+when we try to connect backen nad front end and if they are 
+runing on different port it will give cours error
+
+** to avoid cors we have to provide proxy to frontend
+// so in frontend package.json we add proxy .
+
+{"proxy": "http://127.0.0.1:500"}
