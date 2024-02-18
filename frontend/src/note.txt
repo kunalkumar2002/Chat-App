@@ -15,3 +15,6 @@ runing on different port it will give cours error
     4. latestMessage
     5. grouAdmin
   }
+  /autheticating user with JWT (json web Token)
+
+  //incripting password using bycrt to hade user real password
