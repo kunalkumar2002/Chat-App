@@ -39,21 +39,40 @@ export const registerUser = asyncHandler(async (req, res) => {
 });
 
 export const authUser = asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email })
-    
-    if (user && (await user.matchPassword(password))) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        pic: user.pic,
-        token: generateToken(user._id),
-      });
-    } else {
-      res.status(401);
-      throw new Error("Invalid Email and password");
-    }
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      pic: user.pic,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid Email and password");
+  }
+});
+
+//using query for this in place of post request
+//api/user?search=kunal
+export const allUsers = asyncHandler(async (req, res) => {
+  //regex provide regular expression capabilities for pattern matching atring in queries in mongoDB
+  //"i" option is ia case insesenssitivity to match upper case nad lower case
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } },
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
+  //console.log(keyword);
+  //$ne = not equal to query
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+  res.send(users);
 });
 
 // export default registerUser,authUser;
