@@ -20,4 +20,9 @@ runing on different port it will give cours error
   //incripting password using bycrt to hade user real password
 
   //for adding picture using cloudinary
+
+  //using Tooltip for poping arrow massage when hoveroooong searh
+
+
+  //ChevronDownIcon from chakra-ui/icons insatall by  npm i @chakra-ui/icons
   
