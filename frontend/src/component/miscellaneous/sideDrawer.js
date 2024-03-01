@@ -18,6 +18,7 @@ import {
   DrawerBody,
   Input,
   useToast,
+  Spinner,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { ChatState } from "../../Context/chatProvider";
@@ -187,6 +188,7 @@ const SideDrawer = () => {
              ))
             )}
           </DrawerBody>
+          {lodingChat && <Spinner ml={'auto'} display={"flex"}></Spinner>}
         </DrawerContent>
       </Drawer>
     </>
