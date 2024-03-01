@@ -43,7 +43,7 @@ const GroupChatModal = ({ children }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`/api/user?search=${query}`, config); // Use the query directly here
+      const { data } = await axios.get(`/api/user?search=${search}`, config); // Use the query directly here
       console.log(data);
       setLoading(false);
       setSearchResult(data);
@@ -127,8 +127,8 @@ const GroupChatModal = ({ children }) => {
 
   //delete
 
-    const handleDelete = (delUser) => {
-      setSelectedUsers(selectedUsers.filter((sel) => sel._id !== delUser._id));
+  const handleDelete = (delUser) => {
+    setSelectedUsers(selectedUsers.filter((sel) => sel._id !== delUser._id));
   };
 
   return (

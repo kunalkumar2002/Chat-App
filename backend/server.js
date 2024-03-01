@@ -4,7 +4,8 @@ import { chats } from "./data/data.js";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
-import chatRoutes from "./routes/chatRoutes.js"
+import chatRoutes from "./routes/chatRoutes.js";
+import messageRoutes from "./routes/messageRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const server = express();
@@ -22,6 +23,8 @@ server.get("/", (req, res) => {
 
 server.use("/api/user", userRoutes);
 server.use("/api/chat", chatRoutes);
+server.use("/api/message", messageRoutes);
+
 server.use(notFound);
 server.use(errorHandler);
 

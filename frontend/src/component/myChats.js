@@ -11,7 +11,7 @@ import { ChatState } from "../Context/chatProvider.js";
 import { getSender } from "../config/getSender.js";
 import GroupChatModal from "./miscellaneous/groupChatModal.js";
 
-const MyChats = () => {
+const MyChats = ({fetchAgin}) => {
   const [loggedUser, setLoggedUser] = useState();
 
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
@@ -45,7 +45,7 @@ const MyChats = () => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
     // eslint-disable-next-line
-  }, []);
+  }, [fetchAgin]);
 
   return (
     <Box
